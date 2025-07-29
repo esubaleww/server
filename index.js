@@ -35,7 +35,7 @@ const messageRoutes = require("./routes/messageRoutes");
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["https://esubaleww.github.io", "http://localhost:3000"],
     credentials: true,
   })
 );
