@@ -11,3 +11,4 @@ const db = mysql.createPool({
   password: parsedUrl.password, // yourpassword
   database: parsedUrl.pathname.substring(1), // removes the leading slash
 });
+module.exports = db;
