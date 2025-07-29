@@ -1,13 +1,13 @@
 const mysql = require("mysql2/promise");
-const dotenv = require("dotenv");
-dotenv.config();
+const url = require("url");
+
+const dbUrl = process.env.DATABASE_URL;
+const parsedUrl = new URL(dbUrl);
 
 const db = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  port: process.env.DB_PORT || 3306,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: parsedUrl.hostname, // mysql.internal
+  port: parsedUrl.port || 3306,
+  user: parsedUrl.username, // root
+  password: parsedUrl.password, // yourpassword
+  database: parsedUrl.pathname.substring(1), // removes the leading slash
 });
-
-module.exports = db;
