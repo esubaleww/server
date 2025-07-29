@@ -131,3 +131,12 @@ app.use((err, req, res, next) => {
 server.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+app.get("/test-db", async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT NOW()");
+    res.json({ success: true, serverTime: rows[0] });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: "DB connection failed" });
+  }
+});
