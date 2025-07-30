@@ -20,7 +20,7 @@ exports.getProfile = async (req, res) => {
       phone: user.phone,
       role: user.role,
       profile_picture: user.profile_picture
-        ? `http://localhost:5000/uploads/${user.profile_picture}`
+        ? `https://server-production-82bb.up.railway.app/uploads/${user.profile_picture}`
         : null,
     });
   } catch (err) {
@@ -73,7 +73,7 @@ exports.updateProfile = async (req, res) => {
       email: updatedUser.email,
       phone: updatedUser.phone,
       profile_picture: updatedUser.profile_picture
-        ? `http://localhost:5000/uploads/${updatedUser.profile_picture}`
+        ? `https://server-production-82bb.up.railway.app/uploads/${updatedUser.profile_picture}`
         : null,
     });
   } catch (error) {
